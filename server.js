@@ -3,13 +3,9 @@
 //Now, we can directly run this js file directly or by nodemon server.js to run socket server and it will be rendered using express and type  127.0.0.1:3000 on chrome and we are done.
 const express=require("express");
 const path = require('path');
-/*const io=require('socket.io')(8000)//Here we are making a server on port 8000 and it's different from which we created using live server i.e. frontend part.Actually live server which we are using to create localhost using vs code is for client-side and earlier coding of backend in dance website our server and client side were on same port but here we are making a total different server for our server side coding.Here socket.io is a server or connection and it uses websocket protocol just like http(protocol) but it supports bi-directional commn.*/
-const app=express();
-const server = require('http').createServer(app);
-const { Server } = require("socket.io");
-const io = new Server(server);
+const io=require('socket.io')(8000)//Here we are making a server on port 8000 and it's different from which we created using live server i.e. frontend part.Actually live server which we are using to create localhost using vs code is for client-side and earlier coding of backend in dance website our server and client side were on same port but here we are making a total different server for our server side coding.Here socket.io is a server or connection and it uses websocket protocol just like http(protocol) but it supports bi-directional commn.
 const users={};//It's used to add new users.
-
+const app=express();
 
 const staticPath=path.join(__dirname, "../public");
 app.use(express.static(staticPath))
