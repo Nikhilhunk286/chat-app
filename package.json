@@ -4,7 +4,7 @@
   "description": "Node server  for Mychat application",
   "main": "index.js",
   "scripts": {
-    "build": npm install && cd public &&  npm install
+    "build": npm install && cd public &&  npm install,
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
