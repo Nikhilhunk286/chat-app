@@ -6,7 +6,7 @@ const io=require('socket.io')(8000)//Here we are making a server on port 8000 an
 const users={};//It's used to add new users.
 const app=express();
 
-const staticPath=path.join(__dirname, "../public");
+const staticPath=path.join(__dirname, "/public");
 app.use(express.static(staticPath));
 const port=process.env.PORT || 3000;
 app.engine('html', require('ejs').renderFile);
