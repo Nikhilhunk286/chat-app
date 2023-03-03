@@ -1,13 +1,18 @@
 //Node server -> It will handle socket io connections.
-//First run index.html file then run it by going inside node-server file by cd node-server and then  do nodemon server.js.we can also directly run this site directly(by same procedure i.e. cd node-server then run this code) and  create a local server but to have automatic updates on some editing then use nodemon.
+//Earlier we used to First run index.html file then run it by going inside node-server file by cd node-server and then  do nodemon server.js.we can also directly run this site directly(by same procedure i.e. cd node-server then run this code) and  create a local server but to have automatic updates on some editing then use nodemon.
+//Now, we can directly run this js file directly or by nodemon server.js to run socket server and it will be rendered using express and type  127.0.0.1:3000 on chrome and we are done.
 const express=require("express");
 const path = require('path');
-const io=require('socket.io')(8000)//Here we are making a server on port 8000 and it's different from which we created using live server i.e. frontend part.Actually live server which we are using to create localhost using vs code is for client-side and earlier coding of backend in dance website our server and client side were on same port but here we are making a total different server for our server side coding.Here socket.io is a server or connection and it uses websocket protocol just like http(protocol) but it supports bi-directional commn.
-const users={};//It's used to add new users.
+/*const io=require('socket.io')(8000)//Here we are making a server on port 8000 and it's different from which we created using live server i.e. frontend part.Actually live server which we are using to create localhost using vs code is for client-side and earlier coding of backend in dance website our server and client side were on same port but here we are making a total different server for our server side coding.Here socket.io is a server or connection and it uses websocket protocol just like http(protocol) but it supports bi-directional commn.*/
 const app=express();
+const server = require('http').createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
+const users={};//It's used to add new users.
 
-const staticPath=path.join(__dirname, "/public");
-app.use(express.static(staticPath));
+
+const staticPath=path.join(__dirname, "../public");
+app.use(express.static(staticPath))
 const port=process.env.PORT || 3000;
 app.engine('html', require('ejs').renderFile);
 
@@ -32,4 +37,4 @@ socket.on('disconnect',message=>{
     delete users[socket.id];
 });
 })
-app.listen(port,()=>{console.log(`The application started successfully on port ${port}`);});
+app.listen(port,()=>{console.log(`The application started successfully on port ${port}`);});//It's used to run  the html file which we renderd using express.
