@@ -4,8 +4,8 @@
   "description": "Node server  for Mychat application",
   "main": "index.js",
   "scripts": {
-    "build": "cd node_modules && npm install && cd ../public && npm install && npm run build",
-    "start": "node node_modules/server.js",
+    "build": "cd node-server && npm install && cd ../public && npm install && npm run build",
+    "start": "node node-server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
